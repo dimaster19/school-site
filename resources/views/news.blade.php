@@ -4,7 +4,7 @@
     <div class="w-100">
         <h1 class="text-center fw-bold">Название новости</h1>
         <div class="d-flex justify-content-between w-25 mx-auto">
-            <div class="news-date">
+            <div class="news-date text-center w-100">
                 23.07.2002, 18:05
             </div>
         </div>

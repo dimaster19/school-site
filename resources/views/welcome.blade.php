@@ -27,8 +27,8 @@
     <h2 class="text-center border-bottom pb-3 mb-4">Объявление</h2>
     <div class="w-100 radius-content py-4 px-4 mb-4" >
         <h3 class="fs-4 fw-bold">Важно</h3>
-        <p class="fs-4 mt-2 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. In doloribus dolorem delectus ex odit dolorum commodi debitis autem cupiditate odio? Et laboriosam eveniet eaque cumque distinctio omnis repellendus maxime eius.</p>
-        <p class="fs-4 mt-2 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus ducimus qui id reprehenderit hic, laudantium ab quia vel distinctio et quam aliquam molestiae, porro quisquam facilis, possimus perferendis autem laboriosam.</p>
+        <p class="fs-4 mt-2" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. In doloribus dolorem delectus ex odit dolorum commodi debitis autem cupiditate odio? Et laboriosam eveniet eaque cumque distinctio omnis repellendus maxime eius.</p>
+        <p class="fs-4 mt-2" style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus ducimus qui id reprehenderit hic, laudantium ab quia vel distinctio et quam aliquam molestiae, porro quisquam facilis, possimus perferendis autem laboriosam.</p>
     </div>
     <h2 class="text-center border-bottom pb-3">Новости школы</h2>
     <div class="row">

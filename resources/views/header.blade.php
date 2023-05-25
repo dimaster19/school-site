@@ -44,10 +44,13 @@
                         <a href="#" class="nav-link link-dark link-opacity-25-hover px-2 " id="teachprocess">
                             Учебный процесс
                         </a>
-                        <ul class="p-0 py-2 drop-link" style="z-index: 1000">
-                            <li><a class="dropdown-item" href="#">Действие</a></li>
-                            <li><a class="dropdown-item" href="#">Другое действие</a></li>
-                            <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                        <ul class="p-0 py-2 drop-link" style="z-index: 1000; width: 150px; overflow-wrap:break-word;">
+                            <li><a class="dropdown-item text-wrap" href="#">
+                                    Дистанционное образование
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Расписание</a></li>
+                            <li><a class="dropdown-item" href="#">Мероприятия</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a href="#" class="nav-link link-dark link-opacity-25-hover py-2 px-2">Блог</a></li>
