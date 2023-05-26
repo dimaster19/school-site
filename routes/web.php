@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/novosti', [App\Http\Controllers\NewsController::class, 'index'])->name('novosti');
-Route::get('/novosti/{{id}}', [App\Http\Controllers\NewsController::class, 'getNews'])->name('novosti');
+Route::get('/novosti/{name}', [App\Http\Controllers\NewsController::class, 'getNews'])->name('novosti');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/o-nas', [App\Http\Controllers\NewsController::class, 'getNews'])->name('o-nas');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('glavnaya');
 
-Route::get('/news', function () {
-    return view('news');
-});
 
-Route::get('/aboutUs', function () {
+
+Route::get('/o-nas', function () {
     return view('aboutUs');
 });
 

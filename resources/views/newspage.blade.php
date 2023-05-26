@@ -10,7 +10,7 @@
     <div class="row" >
         @foreach ($news as $item)
         <div class="col-lg-6 col-md-12 mt-3">
-            <a class="card-link"  href="{{ env('APP_URL').'/'.$item->id.'-'.str_replace(' ', '-', $item->title)}}">
+            <a class="card-link"  href="{{ env('APP_URL').'/novosti/'.$item->id.'-'.str_replace(' ', '-', $item->title)}}">
                 <div class="card" >
                     <img src="https://imgholder.ru/1500x500/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson" style="width: 100%; height: auto" class="card-img-top" alt="img">
                     <div class="card-body">

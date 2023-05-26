@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedInteger('rank_id');
+            $table->string('photo');
+            $table->string('full_rank')->nullable();
             $table->timestamps();
+
+            $table->foreign('rank_id')->references('id')->on('ranks');
+
         });
     }
 

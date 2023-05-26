@@ -3,19 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
+use App\Models\Rank;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        Rank::factory()->count(5)->create();
+        Employee::factory()->count(5)->create(); // Удалить
+        $title = 'Школа №43 г.Донецк';
+        $carousel = '';
+        return view('welcome', compact('carousel', 'title'));
     }
 }
