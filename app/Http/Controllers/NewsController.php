@@ -33,14 +33,15 @@ class NewsController extends Controller
             if ($char == '-') break;
             else $id = $id.strval($char);
         }
+        // ----
 
         // get title from url
         $temp = (string)$id.'-';
         $title = str_replace($temp, "", $name);
         $title = str_replace("-", " ", $title);
-        // --
+        // ----
 
-        $news= News::findOrFail($id);
+        $news = News::findOrFail($id);
         return view('news', compact('news', 'title'));
     }
 

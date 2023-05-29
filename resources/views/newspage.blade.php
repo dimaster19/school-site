@@ -15,7 +15,7 @@
                     <img src="https://imgholder.ru/1500x500/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson" style="width: 100%; height: auto" class="card-img-top" alt="img">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
-                        <p class="card-text">{{substr($item->text, 0, 200)}}...</p>
+                        <p class="card-text" style="min-height: 77px;">{{substr($item->text, 0, 200)}}...</p>
                         <p class="card-text"><small class="text-muted">{{ $item->updated_at->format('Y-m-d , H:i')}}</small></p>
                     </div>
                 </div>
