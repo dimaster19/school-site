@@ -1,3 +1,4 @@
+<? $title = 'Контактная информация о школе №43 г.Донецк' ?>
 @include ('header')
 
 <div class="container radius-content py-4 px-4">
@@ -10,7 +11,7 @@
     </div>
     <div class="d-flex">
         <div class="fw-bold">Телефон:</div>
-        <div class="ps-2">+ 7 949 453 19 81</div>
+        <div class="ps-2">+ 7 949 453-19-81</div>
     </div>
     <div class="d-flex">
         <div class="fw-bold">График работы:</div>

@@ -1,3 +1,4 @@
+<? $title = 'Дистанционное образование в школе №43 г.Донецк' ?>
 @include ('header')
 <div class="news-title mb-3" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
     <div class="w-100">

@@ -4,7 +4,7 @@
         <div class="carousel-inner">
             @foreach ($carousel as $img)
             <div class="carousel-item">
-                <a href="" class=""><img src="{{ env('APP_URL').'/build/imgs/carousel/'.$img}}" style="max-height: 550px; max-width: 1920px" class="d-block w-100" alt="{{$img}}"></a>
+                <a class=""><img src="{{ env('APP_URL').'/build/imgs/carousel/'.$img}}" style="max-height: 550px; max-width: 1920px" class="d-block w-100" alt="{{$img}}"></a>
             </div>
             @endforeach
         </div>
