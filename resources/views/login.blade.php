@@ -20,7 +20,7 @@
 
                     <!-- Checkbox -->
                     <div class="form-check d-flex justify-content-start mb-4">
-                        <input class="form-check-input" name="remember" type="checkbox" value="" id="form1Example3" />
+                        <input class="form-check-input" name="remember" type="checkbox"  id="form1Example3" />
                         <label class="form-check-label mx-2" for="form1Example3"> Запомнить меня</label>
                     </div>
 

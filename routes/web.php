@@ -45,25 +45,22 @@ Route::group(['middleware' => ['guest']], function() {
     /**
      * Register Routes
      */
-    Route::get('/login',  [App\Http\Controllers\AuthController::class, 'login'])->name('register.show');
-    Route::post('/login',  [App\Http\Controllers\AuthController::class, 'auth'])->name('register.perform');
+    Route::get('/login',  [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+    Route::post('/login',  [App\Http\Controllers\AuthController::class, 'auth'])->name('auth');
 
 });
 
+Route::get('/admin-panel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin-panel');
+Route::get('/get-db-columns', [App\Http\Controllers\AdminController::class, 'getColumns'])->name('getDbColumns');
+Route::get('/row', [App\Http\Controllers\AdminController::class, 'getRow'])->name('getRow');
+Route::post('/row', [App\Http\Controllers\AdminController::class, 'createRow'])->name('createRow');
+Route::put('/row', [App\Http\Controllers\AdminController::class, 'updateRow'])->name('updateRow');
+Route::delete('/row', [App\Http\Controllers\AdminController::class, 'removeRow'])->name('removeRow');
+Route::post('/upload-files', [App\Http\Controllers\AdminController::class, 'uploadFiles'])->name('uploadFiles');
+
 Route::group(['middleware' => ['auth']], function() {
 
-    Route::get('/logout',  [LogoutController::class, 'perform'])->name('logout.perform');
-    Route::get('/admin-panel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin-panel');
 
-    Route::get('/profile', [ProfileController::class, 'load'])->name('profile.show');
-    Route::post('/profile',  [LoginController::class, 'login1'])->name('login.perform1');
-    Route::get('/adminpanel',  [AdminPanelController::class, 'load'])->name('admin-panel');
-    Route::get('/getdbdata',  [AdminPanelController::class, 'getColumns'])->name('getdbdata');
-    Route::get('/adminpanel/{db}',  [AdminPanelController::class, 'getData'])->name('getdb');
-    Route::get('/updatedata',  [AdminPanelController::class, 'getUpdateData'])->name('getUpdateData');
-    Route::post('/adminaction',  [AdminPanelController::class, 'adminAction'])->name('adminaction');
-    Route::post('/carousel',  [AdminPanelController::class, 'editCarousel'])->name('editCarousel');
-    Route::post('/filesupload',  [AdminPanelController::class, 'uploadFiles'])->name('filesupload');
 
 });
 

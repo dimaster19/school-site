@@ -21,8 +21,9 @@
         </ul>
     </div>
     <hr>
-    <admin-panel />
-
+    <div id="app">
+        <admin-panel :tables = '@json($tables)' />
+    </div>
 </div>
 
 

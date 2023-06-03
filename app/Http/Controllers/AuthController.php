@@ -13,7 +13,7 @@ class AuthController extends Controller
         return view('login', compact('title', 'error'));
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request )
     {
         Auth::logout();
 
@@ -31,7 +31,17 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        // check checkbox
+        $remember = $request->remember;
+        if ( $remember == "on") {
+            $remember = true;
+        }
+        else {
+            $remember = false;
+        }
+        // ----
+
+        if (Auth::attempt($credentials,  $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended('admin-panel');
