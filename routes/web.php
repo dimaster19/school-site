@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Employee;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -50,18 +50,19 @@ Route::group(['middleware' => ['guest']], function() {
 
 });
 
-Route::get('/admin-panel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin-panel');
-Route::get('/get-db-columns', [App\Http\Controllers\AdminController::class, 'getColumns'])->name('getDbColumns');
-Route::get('/row', [App\Http\Controllers\AdminController::class, 'getRow'])->name('getRow');
-Route::post('/row', [App\Http\Controllers\AdminController::class, 'createRow'])->name('createRow');
-Route::put('/row', [App\Http\Controllers\AdminController::class, 'updateRow'])->name('updateRow');
-Route::delete('/row', [App\Http\Controllers\AdminController::class, 'removeRow'])->name('removeRow');
-Route::post('/upload-files', [App\Http\Controllers\AdminController::class, 'uploadFiles'])->name('uploadFiles');
-
 Route::group(['middleware' => ['auth']], function() {
-
-
+    Route::get('/admin-panel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin-panel');
+    Route::get('/get-db-columns', [App\Http\Controllers\AdminController::class, 'getColumns'])->name('getDbColumns');
+    Route::get('/row', [App\Http\Controllers\AdminController::class, 'getRow'])->name('getRow');
+    Route::post('/row', [App\Http\Controllers\AdminController::class, 'createRow'])->name('createRow');
+    Route::put('/row', [App\Http\Controllers\AdminController::class, 'updateRow'])->name('updateRow');
+    Route::delete('/row', [App\Http\Controllers\AdminController::class, 'removeRow'])->name('removeRow');
+    Route::post('/upload-files', [App\Http\Controllers\AdminController::class, 'uploadFiles'])->name('uploadFiles');
+    Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+    Route::get('/viewDb/{db}', [App\Http\Controllers\AdminController::class, 'viewDb'])->name('viewDb');
 
 });
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -16,11 +16,9 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Школа №43 г.Донецк';
-        $users = News::factory()->count(3)->create();
         $notify = $this->getNotify();
         $carousel = $this->getCarousel();
         $news = $this->getLatestNews();
-
         return view('welcome', compact('carousel', 'news', 'notify', 'title'));
     }
 
@@ -56,7 +54,7 @@ class HomeController extends Controller
 
     public function getNotify()
     {
-        return Notify::latest()->get();
+        return Notify::latest()->first();
     }
 
     public function setNotify(string $text)

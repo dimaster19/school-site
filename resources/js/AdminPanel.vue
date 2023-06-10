@@ -2,18 +2,18 @@
 <template>
     <div class="row">
         <div v-for="table in this.tables" class="col-lg-4 col-md-6 col-sm-12 mt-3">
-            <div style="height: 250px; background-color: #fd850d;">
-                <button class="fs-3" v-on:click="modalClick($event.target)" :id="table" data-bs-toggle="modal"
-                    data-bs-target="#dbModal" style="width:100%; height: 100%; background-color: transparent;">{{
+            <div style="height: 250px;">
+                <button class="fs-3 btn btn-warning" v-on:click="modalClick($event.target)" :id="table" data-bs-toggle="modal"
+                    data-bs-target="#dbModal" style="width:100%; height: 100%;">{{
                         table }}</button>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-            <div style="height: 250px; background-color: #fd850d;">
-                <button class="fs-3" id="files" data-bs-toggle="modal" data-bs-target="#filesModal"
-                    style="width:100%; height: 100%; background-color: transparent;">Загрузить файл</button>
+        <div class="col-lg-12 col-md-12 col-sm-12 mt-3">
+            <div style="height: 150px; ">
+                <button class="fs-3 btn btn-warning"  id="files" data-bs-toggle="modal" data-bs-target="#filesModal"
+                    style="width:100%; height: 100%;">Загрузить файл</button>
             </div>
         </div>
     </div>
@@ -51,13 +51,16 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-add" role="tabpanel"
                                 aria-labelledby="pills-add-tab">
-                                <form>
+                                <form class="needs-validation" validate>
 
                                     <div v-for="data in this.modal_data" class="mb-3">
-                                        <div
-                                            v-if="data !== 'id' && data !== 'created_at' && data !== 'updated_at' && data !== 'remember_token'">
+                                        <div v-if="data !== 'id' && data !== 'created_at' && data !== 'updated_at' && data !== 'remember_token'  && data !== 'text'">
                                             <label class="form-label">{{ data }}</label>
-                                            <input type="text" class="form-control db-create" :id="data">
+                                            <input type="text" class="form-control db-create" value="" :id="data" required>
+                                        </div>
+                                        <div v-if ="data == 'text'">
+                                            <label class="form-label">{{ data }}</label>
+                                            <textarea class="form-control db-create" value="" :id="data" />
                                         </div>
                                     </div>
                                     <button type="button" v-on:click="createClick()" id="create"
@@ -66,22 +69,25 @@
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="pills-update" role="tabpanel" aria-labelledby="pills-update-tab">
-                                <form action="">
+                                <form class="needs-validation" validate>
                                     <div class="mb-3">
                                         <label class="form-label">Введите ID</label>
-                                        <input type="text" class="form-control" v-model="update_id">
+                                        <input type="text" class="form-control" v-model="update_id" required>
                                         <button type="button" v-on:click="updateIdClick"
                                             class="btn btn-primary mt-3">Получить</button>
                                     </div>
                                 </form>
-                                <form>
+                                <form class="needs-validation" validate>
                                     <fieldset id="update_fieldset" disabled>
                                         <div v-for="data in this.modal_data" class="mb-3">
-                                            <div
-                                                v-if="data !== 'id' && data !== 'created_at' && data !== 'updated_at' && data !== 'remember_token'">
+                                            <div v-if="data !== 'id' && data !== 'created_at' && data !== 'updated_at' && data !== 'remember_token' && data !== 'text'">
                                                 <label class="form-label">{{ data }}</label>
-                                                <input type="text" class="form-control db-update" :id="data">
+                                                <input type="text" class="form-control db-update" value="" :id="data" required>
                                             </div>
+                                            <div v-if ="data == 'text'">
+                                            <label class="form-label">{{ data }}</label>
+                                            <textarea class="form-control db-update" value="" :id="data" />
+                                        </div>
                                         </div>
                                         <button type="button" v-on:click="updateClick()" id="update"
                                             class="btn btn-primary mt-3">Отправить</button>
@@ -91,7 +97,7 @@
                             </div>
                             <div class="tab-pane fade" id="pills-remove" role="tabpanel" aria-labelledby="pills-remove-tab">
                                 <label class="form-label">Удаляемый ID</label>
-                                <input type="text" class="form-control db-remove">
+                                <input type="text" class="form-control db-remove" value="" required>
                                 <button type="button" v-on:click="removeClick()" id="remove"
                                     class="btn btn-primary mt-3">Отправить</button>
 
@@ -185,7 +191,8 @@ export default {
 
         },
         updateIdClick: function () {
-            axios
+            if (this.update_id !== null && this.update_id !== "" ) {
+                axios
                 .get(import.meta.env.VITE_BASE_URL + '/row', {
                     params: {
                         id: this.update_id,
@@ -204,38 +211,46 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
+            }
+            else {
+                alert('Заполните все поля')
+            }
+           
         },
 
         createClick: function () {
+            if (this.checkInputValue('db-create') === true) {
+                let list = document.getElementsByClassName('db-create')
+                let row_data = new Object()
+                Array.from(list).forEach(function (el) {
+                    row_data[el.id] = el.value
+                });
 
-            let list = document.getElementsByClassName('db-create')
-            let row_data = new Object()
-            console.log(list.length);
-            Array.from(list).forEach(function (el) {
-                row_data[el.id] = el.value
-            });
-
-
-            axios.post(import.meta.env.VITE_BASE_URL + '/row', {
+                axios.post(import.meta.env.VITE_BASE_URL + '/row', {
 
 
-                data: row_data,
-                db: this.table_name
+                    data: row_data,
+                    db: this.table_name
 
-
-            })
-                .then(response => {
-                    alert('Запись успешно создана')
 
                 })
-                .catch(error => {
-                    console.log(error);
-                });
+                    .then(response => {
+                        alert('Запись успешно создана')
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+            else {
+                alert('Заполните все поля')
+            }
+
 
         },
 
         updateClick: function () {
-
+            if (this.checkInputValue('db-update') === true) {
             let list = document.getElementsByClassName('db-update')
             let row_data = new Object()
             console.log(list.length);
@@ -259,13 +274,16 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-
+            }
+            else {
+                alert('Заполните все поля')
+            }
         },
 
         removeClick: function (e) {
+            if (this.checkInputValue('db-remove') === true) {
+
             let id = document.getElementsByClassName('db-remove')[0].value
-
-
             axios.delete(import.meta.env.VITE_BASE_URL + '/row', {
 
                 db: this.table_name,
@@ -279,6 +297,10 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+            }
+            else {
+                alert('Заполните все поля')
+            }
         },
 
         closeModal: function () {
@@ -288,7 +310,6 @@ export default {
 
         handleFileUpload: function (e) {
             this.files = e.files
-            console.log(this.files)
         },
 
         submitFile: function () {
@@ -300,25 +321,33 @@ export default {
                 let file = this.files[i];
                 formData.append('files[' + i + ']', file);
             }
-            formData.append('path',checked)
+            formData.append('path', checked)
             axios.post(import.meta.env.VITE_BASE_URL + '/upload-files',
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
-                   
+
                 },
-                
+
             ).then(function () {
                 alert('Файлы загружены');
             })
-            .catch(error => {
+                .catch(error => {
                     console.log(error);
                 });
+        },
+
+        checkInputValue: function (class_name) {
+            let inputs = document.getElementsByClassName(class_name)
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === "") {
+                    return false
+                }
+            }
+            return true
         }
-
-
     }
 }
 </script>

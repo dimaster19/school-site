@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="w-100 radius-content py-4 px-4 mb-4">
-        <p class="fs-4 mt-2" style="text-align: justify;">{{$news->text}}</p>
+        <p class="fs-4 mt-2" style="text-align: justify; white-space: pre-line">{{$news->text}}</p>
 
         <div id="carouselExampleDark" class="carousel slide mt-4 mb-4" data-bs-ride="carousel">
             <div class="carousel-indicators">

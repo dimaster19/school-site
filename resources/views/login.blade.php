@@ -25,7 +25,7 @@
                     </div>
 
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Вход</button>
-
+                    <div class="w-100"><a class=" link-underline-opacity-75-hover"  style="color: #212529 !important; text-decoration: none" href="{{env('APP_URL')}}">На главную</a></div>
                 </form>
                 @if ($errors->any())
                 <div class="alert alert-danger">

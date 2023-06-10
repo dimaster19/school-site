@@ -9,5 +9,6 @@ class Rank extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = true;
 
 }

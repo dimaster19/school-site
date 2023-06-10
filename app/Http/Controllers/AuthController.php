@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 class AuthController extends Controller
 {
     public function login($error = false)
@@ -40,7 +40,7 @@ class AuthController extends Controller
             $remember = false;
         }
         // ----
-
+        Log::debug('remember_token = '. $remember);
         if (Auth::attempt($credentials,  $remember)) {
             $request->session()->regenerate();
 

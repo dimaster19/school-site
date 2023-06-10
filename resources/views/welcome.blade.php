@@ -22,9 +22,8 @@
 <div class="container">
     <h2 class="text-center border-bottom pb-3 mb-4">Объявление</h2>
     <div class="w-100 radius-content py-4 px-4 mb-4">
-        <h3 class="fs-4 fw-bold">Важно</h3>
-        <p class="fs-4 mt-2" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. In doloribus dolorem delectus ex odit dolorum commodi debitis autem cupiditate odio? Et laboriosam eveniet eaque cumque distinctio omnis repellendus maxime eius.</p>
-        <p class="fs-4 mt-2" style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus ducimus qui id reprehenderit hic, laudantium ab quia vel distinctio et quam aliquam molestiae, porro quisquam facilis, possimus perferendis autem laboriosam.</p>
+        <h3 class="fs-4 fw-bold">{{ $notify->title }}</h3>
+        <p class="fs-4 mt-2" style="text-align: justify; white-space: pre-line">{{ $notify->text }}</p>
     </div>
     <h2 class="text-center border-bottom pb-3">Новости школы</h2>
     <div class="row">
@@ -32,7 +31,7 @@
         <div class="col-lg-6 col-md-12 mt-3">
             <a class="card-link" href="{{ env('APP_URL').'/novosti/'.$item->id.'-'.str_replace(' ', '-', $item->title)}}">
                 <div class="card">
-                    <img src="https://imgholder.ru/1500x500/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson" style="width: 100%; height: auto" class="card-img-top" alt="img">
+                    <img src="{{env('APP_URL')}}/build/imgs/news/{{$item->mainimg}}" style="width: 100%; height: auto" class="card-img-top" alt="img">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
                         <p class="card-text" style="min-height: 77px;">{{substr($item->text, 0, 200)}}...</p>

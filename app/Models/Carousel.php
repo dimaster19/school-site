@@ -9,5 +9,6 @@ class Carousel extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = true;
 
 }

@@ -9,5 +9,6 @@ class Notify extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = true;
 
 }

@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $title = 'Админ-панель';
-        $tables = ['news', 'ranks', 'employees'];
-        Rank::factory(5)->create();
-        return view('admin-panel', compact('title', 'tables'));
+        if (Auth::check() && Auth::user()->super == true) {
+            $tables = ['news', 'ranks', 'employees', 'notifies', 'users'];
+            return view('admin-panel', compact('title', 'tables'));
+        } else if (Auth::check() && Auth::user()->super == false) {
+            $tables = ['news', 'ranks', 'employees', 'notifies'];
+            return view('admin-panel', compact('title', 'tables'));
+        }
     }
 
     public function getColumns(Request $request)
@@ -32,13 +35,21 @@ class AdminController extends Controller
 
     public function createRow(Request $request)
     {
-
-        DB::table($request->db)->insert($request->data);
+        $data = $request->data;
+        $data['created_at'] = \Carbon\Carbon::now();
+        $data['updated_at'] = \Carbon\Carbon::now();
+        if ($request->db == "users") {
+            $data['password'] = Hash::make($data['password']);
+        }
+        DB::table($request->db)->insert($data);
     }
 
     public function updateRow(Request $request)
     {
-        DB::table($request->db)->where('id', $request->id)->update($request->data);
+
+        $data = $request->data;
+        $data['updated_at'] = \Carbon\Carbon::now();
+        DB::table($request->db)->where('id', $request->id)->update($data);
     }
 
     public function removeRow(Request $request)
@@ -51,7 +62,18 @@ class AdminController extends Controller
 
         foreach ($request->files as &$file) {
 
-            $file[0]->move(public_path('build/'.$request->path), $file[0]->getClientOriginalName());
+            $file[0]->move(public_path('build/' . $request->path), $file[0]->getClientOriginalName());
         }
+    }
+
+    public function viewDb(Request $request, $db)
+    {
+        $title = ucfirst($db);
+
+        $query =   DB::table($db)->orderBy('id')->paginate(30);
+
+        $columns =  Schema::getColumnListing($db);
+
+        return view('viewdb', compact('query', 'columns', 'title'));
     }
 }

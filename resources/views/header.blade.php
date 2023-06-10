@@ -29,9 +29,14 @@
                         <a href="tel:+79494531981" class="nav-link p-0 link-dark link-opacity-25-hover">+7 949 453-19-81</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <div class="d-flex align-items-center"><i class="fa fa-map-marker px-1"  style="font-size: 18px; color:#fd850d" aria-hidden="true"></i></div>
+                        <div class="d-flex align-items-center"><i class="fa fa-map-marker px-1" style="font-size: 18px; color:#fd850d" aria-hidden="true"></i></div>
                         <div class="d-flex align-items-center link-dark link-opacity-25-hover">г.Донецк, ул.Артема, д.192-г, кв.85</div>
                     </li>
+                    @auth
+                    <li class="nav-item d-flex ms-2" >
+                        <a href="{{env('APP_URL').'/logout'}}" class="d-flex align-items-center link-dark link-opacity-25-hover">Выход</a>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
