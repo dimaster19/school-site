@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Models\Employee;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,24 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/novosti', [App\Http\Controllers\NewsController::class, 'index'])->name('novosti');
-Route::get('/novosti/{name}', [App\Http\Controllers\NewsController::class, 'getNews'])->name('novosti');
+Route::get('/novosti/{news}', [App\Http\Controllers\NewsController::class, 'getNews'])->name('novost');
 
 Route::get('/o-nas', [App\Http\Controllers\AboutUsController::class, 'index'])->name('o-nas');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('glavnaya');
 
+Route::get('/distancionnoe-obuchenie', [App\Http\Controllers\ResourcesController::class, 'index'])->name('distance');
 
-
-Route::get('/distancionnoe-obuchenie', function () {
-    return view('distance');
-});
-
-Route::get('/uchebniy-proces', function () {
-    return view('study');
-});
 
 Route::get('/kontakti', function () {
     return view('contacts');
-});
+})->name('contacts');
 
 Route::get('/raspisanie', function () {
     return response()->download(public_path('build/files/raspisanie.pdf'));
@@ -62,7 +56,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/viewDb/{db}', [App\Http\Controllers\AdminController::class, 'viewDb'])->name('viewDb');
 
 });
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

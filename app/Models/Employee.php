@@ -11,4 +11,9 @@ class Employee extends Model
     protected $guarded = [];
     public $timestamps = true;
 
+
+    public function resource()
+    {
+        return $this->hasMany(Resource::class);
+    }
 }

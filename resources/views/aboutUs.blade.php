@@ -6,6 +6,7 @@
     </div>
 </div>
 <div class="container py-4 ">
+{{ Breadcrumbs::render('about-us') }}
     <div class="radius-content">
         <div>
         <img  src="../build/imgs/school.jpg" style="width: 100%; height: auto;  border-radius: 8px 8px 0 0 " alt="Фото школы №43 г.Донецк">
@@ -20,7 +21,7 @@
         @foreach ($workers->director as $worker)
         <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
             <div class="card">
-                <img src="https://imgholder.ru/350x250/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson" style="width: 100%; height: 71%" class="card-img-top" alt="img">
+                <img src="{{ env('APP_URL')}}/build/imgs/workers/{{ $worker->photo }}" style="width: 100%; height: 71%" class="card-img-top" alt="img">
                 <div class="card-body">
                     <h4 class="card-title">{{ $worker->name }}</h4>
                     <div>{{ $worker->full_rank }}</div>

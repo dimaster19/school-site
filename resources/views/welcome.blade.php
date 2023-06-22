@@ -22,7 +22,7 @@
 <div class="container">
     <h2 class="text-center border-bottom pb-3 mb-4">Объявление</h2>
     <div class="w-100 radius-content py-4 px-4 mb-4">
-        <h3 class="fs-4 fw-bold">{{ $notify->title }}</h3>
+    <h3 class="fs-4 fw-bold">{{ $notify->title }}</h3>
         <p class="fs-4 mt-2" style="text-align: justify; white-space: pre-line">{{ $notify->text }}</p>
     </div>
     <h2 class="text-center border-bottom pb-3">Новости школы</h2>

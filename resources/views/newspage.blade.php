@@ -6,7 +6,10 @@
 </div>
 
 
+
 <div class="container">
+{{ Breadcrumbs::render('news') }}
+
     <div class="row" >
         @foreach ($news as $item)
         <div class="col-lg-6 col-md-12 mt-3">

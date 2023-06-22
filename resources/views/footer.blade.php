@@ -62,9 +62,9 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                    <h6 class="fw-bold  fs-5"><i class="fa fa-map-marker" style="color:#fd850d" aria-hidden="true"></i> Адрес</h6>
+                    <h6 class="fw-bold  fs-5"><i class="fa fa-map-marker" style="color:#2e86de" aria-hidden="true"></i> Адрес</h6>
                     <p class="mb-2">г.Донецк, ул.Артема, д.192-г, кв.85</p>
-                    <h6 class="fw-bold  fs-5"><i class="fa fa-envelope" style="color:#fd850d" aria-hidden="true"></i> E-mail</h6>
+                    <h6 class="fw-bold  fs-5"><i class="fa fa-envelope" style="color:#2e86de" aria-hidden="true"></i> E-mail</h6>
                     <p>donschool43@yandex.ru</p>
 
                 </div>
@@ -73,9 +73,9 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                    <h6 class="fw-bold  fs-5"><i class="fa fa-phone" style="color:#fd850d" aria-hidden="true"></i> Телефон</h6>
+                    <h6 class="fw-bold  fs-5"><i class="fa fa-phone" style="color:#2e86de" aria-hidden="true"></i> Телефон</h6>
                     <p class="mb-2">+ 7 949 453 19 81</p>
-                    <h6 class="fw-bold  fs-5"><i class="fa fa-clock-o" style="color:#fd850d" aria-hidden="true"></i> График работы</h6>
+                    <h6 class="fw-bold  fs-5"><i class="fa fa-clock-o" style="color:#2e86de" aria-hidden="true"></i> График работы</h6>
                     <p>Пн - Пт, 8:00 - 17:00</p>
 
                 </div>

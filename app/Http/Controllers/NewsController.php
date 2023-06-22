@@ -25,11 +25,11 @@ class NewsController extends Controller
        return News::orderBy('id', 'desc')->paginate(10);
     }
 
-    public function getNews($name)
+    public function getNews($news)
     {
         $id = null;
         // get id from url
-        foreach (str_split($name) as $char) {
+        foreach (str_split($news) as $char) {
             if ($char == '-') break;
             else $id = $id.strval($char);
         }
@@ -37,7 +37,7 @@ class NewsController extends Controller
 
         // get title from url
         $temp = (string)$id.'-';
-        $title = str_replace($temp, "", $name);
+        $title = str_replace($temp, "", $news);
         $title = str_replace("-", " ", $title);
         // ----
 
