@@ -16,8 +16,9 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
-use App\Orchid\Screens\RankScreen;
-
+use App\Orchid\Screens\RankListScreen;
+use App\Orchid\Screens\EmployeeListScreen;
+use App\Orchid\Screens\NewsListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -32,9 +33,19 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-// Ranks Tabke
-Route::screen('/rank', RankScreen::class)
-    ->name('platform.rank');
+// Ranks Table
+Route::screen('/ranks', RankListScreen::class)
+    ->name('platform.ranks');
+
+//Employee Table
+Route::screen('/employees', EmployeeListScreen::class)
+    ->name('platform.employees');
+
+//News Table
+Route::screen('/news', NewsListScreen::class)
+    ->name('platform.news');
+
+
 
 // Main
 Route::screen('/main', PlatformScreen::class)

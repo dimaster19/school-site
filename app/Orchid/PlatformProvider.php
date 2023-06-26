@@ -35,10 +35,14 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             Menu::make('Должности')
-                ->icon('star')
-                ->title('Должности')
-                ->route('platform.rank'),
-
+                ->icon('credit-card-2-back-fill')
+                ->route('platform.ranks'),
+            Menu::make('Сотрудники')
+                ->icon('person-fill')
+                ->route('platform.employees'),
+            Menu::make('Новости')
+                ->icon('newspaper')
+                ->route('platform.news'),
             // Menu::make('Get Started')
             //     ->icon('bs.book')
             //     ->title('Navigation')
