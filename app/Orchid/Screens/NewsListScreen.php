@@ -50,7 +50,7 @@ class NewsListScreen extends Screen
    {
        return [
            ModalToggle::make('Добавить новость')
-               ->modal('addModal')->icon('plus')
+               ->modal('addModal')->icon('plus-circle')
                ->method('createOrUpdate'),
 
        ];
@@ -83,7 +83,7 @@ class NewsListScreen extends Screen
                Layout::rows([
                 Input::make('news.id')->type('hidden'),
                 Input::make('news.title')->title('Заголовок')->required(),
-                TextArea::make('news.text')->title('Текст')->required(),
+                TextArea::make('news.text')->title('Текст')->rows(6)->required(),
                 Picture::make('news.mainimg')
                     ->targetRelativeUrl()
                     ->title('Главная картинка')->required(),

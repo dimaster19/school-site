@@ -52,7 +52,7 @@ class EmployeeListLayout extends Table
                         'employee' => $employee->id
                     ]);
             }),
-            TD::make('edit', 'Удаление')->render(function (Employee  $employee) {
+            TD::make('remove', 'Удаление')->render(function (Employee  $employee) {
                 return  Button::make('Удалить')
                 ->icon('trash')
                 ->method('remove',[

@@ -8,14 +8,14 @@
 
 
 <div class="container">
-{{ Breadcrumbs::render('news') }}
+{{DiglacticBreadcrumbs::render('news') }}
 
     <div class="row" >
         @foreach ($news as $item)
         <div class="col-lg-6 col-md-12 mt-3">
             <a class="card-link"  href="{{ env('APP_URL').'/novosti/'.$item->id.'-'.str_replace(' ', '-', $item->title)}}">
                 <div class="card" >
-                    <img src="{{env('APP_URL')}}/build/imgs/news/{{$item->mainimg}}" style="width: 100%; height: auto" class="card-img-top" alt="img">
+                    <img src="{{env('APP_URL')}}{{$item->mainimg}}" style="width: auto; height: 100%; " class="card-img-top" alt="img">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
                         <p class="card-text" style="min-height: 77px;">{{substr($item->text, 0, 200)}}...</p>

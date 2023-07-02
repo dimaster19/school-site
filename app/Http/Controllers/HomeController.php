@@ -27,24 +27,25 @@ class HomeController extends Controller
         return array_diff(scandir(public_path('build/imgs/carousel')), array('.', '..'));
     }
 
-    public function setCarousel(array $imgs)
+    public static function setCarousel(array $imgs)
     {
         config(['carousel.imgs' => $imgs]);
         return true;
     }
 
-    public function addImgToCarousel(string $img)
+    public static function addImgToCarousel(string $img)
     {
         $imgs = config('carousel.imgs');
         $imgs[] = $img;
         return true;
     }
 
-    public function delImgFromCarousel(string $img)
+    public static function delImgFromCarousel(string $img)
     {
         $imgs = config('carousel.imgs');
         $arr = array_diff($imgs, array($img));
-        $this->setCarousel($arr);
+        $t = new self();
+        $t->setCarousel($arr);
     }
 
     public function getLatestNews($count = 5)

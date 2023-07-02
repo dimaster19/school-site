@@ -43,6 +43,19 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Новости')
                 ->icon('newspaper')
                 ->route('platform.news'),
+            Menu::make('Объявления')
+                ->icon('megaphone-fill')
+                ->route('platform.notifies'),
+            Menu::make('Ресурсы преподавателей')
+                ->icon('link')
+                ->route('platform.resources'),
+            Menu::make('Карусель')
+                ->icon('images')
+                ->route('platform.carousel'),
+            Menu::make(__('Users'))
+                ->icon('bs.people')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users'),
             // Menu::make('Get Started')
             //     ->icon('bs.book')
             //     ->title('Navigation')
@@ -72,11 +85,7 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->route('platform.example.cards')
             //     ->divider(),
 
-            // Menu::make(__('Users'))
-            //     ->icon('bs.people')
-            //     ->route('platform.systems.users')
-            //     ->permission('platform.systems.users')
-            //     ->title(__('Access Controls')),
+
 
             // Menu::make(__('Roles'))
             //     ->icon('bs.lock')

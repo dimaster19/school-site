@@ -2,17 +2,18 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Rank;
-use App\Orchid\Layouts\RankListLayout;
+use App\Models\Notify;
+use App\Orchid\Layouts\NotifyLayout;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\TextArea;
 
 use Illuminate\Http\Request;
 
-class RankListScreen extends Screen
+class NotifyScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -24,7 +25,7 @@ class RankListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'ranks' => Rank::filters()->defaultSort('id', 'asc')->paginate(20),
+            'notifies' => Notify::filters()->defaultSort('id', 'asc')->paginate(20),
         ];
     }
 
@@ -35,7 +36,7 @@ class RankListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Список должностей';
+        return 'Список объявлений';
     }
 
     /**
@@ -46,7 +47,7 @@ class RankListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make('Добавить должность')
+            ModalToggle::make('Добавить объявление')
                 ->modal('addModal')->icon('plus-circle')
                 ->method('createOrUpdate'),
 
@@ -61,21 +62,23 @@ class RankListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            RankListLayout::class,
+            NotifyLayout::class,
             Layout::modal('addModal', [
                 Layout::rows([
-                    Input::make('rank.id')->type('hidden'),
-                    Input::make('rank.rank_name')->title('Название должности')->required()
+                    Input::make('notify.id')->type('hidden'),
+                    Input::make('notify.title')->title('Заголовок')->required(),
+                    TextArea::make('notify.text')->title('Текст')->rows(6)->required(),
 
-                ]),
+                ])
             ])->title('Добавление должности')->applyButton('Добавить')->closeButton('Закрыть'),
+
             Layout::modal('editModal', [
                 Layout::rows([
-                    Input::make('rank.id')->type('hidden'),
-                    Input::make('rank.rank_name')->title('Название должности')->required()
-
-                ]),
-            ])->title('Редактирование должности')->async('asyncGetRank'),
+                    Input::make('notify.id')->type('hidden'),
+                    Input::make('notify.title')->title('Заголовок')->required(),
+                    TextArea::make('notify.text')->title('Текст')->rows(6)->required(),
+                ])
+            ])->title('Редактирование объявления')->async('asyncGetNotify'),
         ];
     }
 
@@ -85,28 +88,28 @@ class RankListScreen extends Screen
      */
     public function createOrUpdate(Request $request): void
     {
-        $id = $request->input('rank.id');
+        $id = $request->input('notify.id');
         $validated = $request->validate([
-            'rank.rank_name' => ['required', 'string']
+            'notify.title' => ['required', 'string'],
+            'notify.text' => ['required'],
         ]);
-        Rank::updateOrCreate(['id' => $id], $validated['rank']);
+
+        Notify::updateOrCreate(['id' => $id], $validated['notify']);
         is_null($id) ? Toast::info('Запись добавлена') : Toast::info('Запись обнавлена');
     }
 
-    public function asyncGetRank(Rank $rank): array
+    public function asyncGetNotify(Notify $notify): array
     {
         return [
-            'rank' => $rank
+            'notify' => $notify
         ];
     }
 
 
     public function remove(Request $request)
     {
-        Rank::findOrFail($request->get('id'))->delete();
+        Notify::findOrFail($request->get('id'))->delete();
 
-        Toast::info('Запись №'.$request->get('id').' успешно удалена');
-
-
+        Toast::info('Запись №' . $request->get('id') . ' успешно удалена');
     }
 }

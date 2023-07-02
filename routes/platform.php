@@ -19,6 +19,9 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\RankListScreen;
 use App\Orchid\Screens\EmployeeListScreen;
 use App\Orchid\Screens\NewsListScreen;
+use App\Orchid\Screens\NotifyScreen;
+use App\Orchid\Screens\ResourceScreen;
+use App\Orchid\Screens\CarouselScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -45,6 +48,18 @@ Route::screen('/employees', EmployeeListScreen::class)
 Route::screen('/news', NewsListScreen::class)
     ->name('platform.news');
 
+
+//Notify Table
+Route::screen('/notifies', NotifyScreen::class)
+    ->name('platform.notifies');
+
+//Resource Table
+Route::screen('/resources', ResourceScreen::class)
+->name('platform.resources');
+
+//Carousel
+Route::screen('/carousel', CarouselScreen::class)
+->name('platform.carousel');
 
 
 // Main

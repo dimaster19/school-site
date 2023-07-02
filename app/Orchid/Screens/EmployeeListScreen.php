@@ -51,7 +51,7 @@ class EmployeeListScreen extends Screen
     {
         return [
             ModalToggle::make('Добавить сотрудника')
-                ->modal('addModal')->icon('plus')
+                ->modal('addModal')->icon('plus-circle')
                 ->method('createOrUpdate'),
 
         ];

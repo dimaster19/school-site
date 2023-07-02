@@ -12,7 +12,6 @@ class ResourcesController extends Controller
     {
         $resources = $this->getResources();
         $title = 'Ресурсы преподавателей Школы №43 г.Донецк';
-        $test = Resource::find(1)->employee;
         return view('distance', compact('resources', 'title'));
     }
 

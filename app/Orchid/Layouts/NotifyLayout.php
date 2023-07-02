@@ -5,10 +5,10 @@ namespace App\Orchid\Layouts;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use Orchid\Screen\Actions\ModalToggle;
-use App\Models\News;
+use App\Models\Notify;
 use Orchid\Screen\Actions\Button;
 
-class NewsListLayout extends Table
+class NotifyLayout extends Table
 {
     /**
      * Data source.
@@ -18,7 +18,7 @@ class NewsListLayout extends Table
      *
      * @var string
      */
-    protected $target = 'all_news';
+    protected $target = 'notifies';
 
     /**
      * Get the table cells to be displayed.
@@ -28,29 +28,30 @@ class NewsListLayout extends Table
     protected function columns(): iterable
     {
         return [
+
             TD::make('id', '№')->sort(),
             TD::make('title', 'Заголовок')->sort(),
-            TD::make('created_at', 'Создана')->render(function (News $news) {
-                if (isset($news->created_at)) return $news->created_at->format('Y-m-d H:i');
+            TD::make('created_at', 'Создана')->render(function (Notify $notify) {
+                if (isset($notify->created_at)) return $notify->created_at->format('Y-m-d H:i');
             })->sort(),
-            TD::make('updated_at', 'Обновлена')->render(function (News $news) {
-                if (isset($news->updated_at)) return $news->updated_at->format('Y-m-d H:i');
+            TD::make('updated_at', 'Обновлена')->render(function (Notify $notify) {
+                if (isset($notify->updated_at)) return $notify->updated_at->format('Y-m-d H:i');
             })->sort(),
-            TD::make('edit', 'Редактирование')->render(function (News $news) {
+            TD::make('edit', 'Редактирование')->render(function (Notify $notify) {
                 return ModalToggle::make('Изменить')
                     ->modal('editModal')
                     ->icon('pencil')
                     ->method('createOrUpdate')
-                    ->modalTitle('Редактирование записи №' . $news->id)
+                    ->modalTitle('Редактирование записи №' . $notify->id)
                     ->asyncParameters([
-                        'news' => $news->id
+                        'notify' => $notify->id
                     ]);
             }),
-            TD::make('remove', 'Удаление')->render(function (News  $news) {
+            TD::make('remove', 'Удаление')->render(function (Notify  $notify) {
                 return  Button::make('Удалить')
                 ->icon('trash')
                 ->method('remove',[
-                    'id' => $news->id,
+                    'id' => $notify->id,
                 ]);
             })
 

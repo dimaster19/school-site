@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use App\Models\Employee;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,6 @@ use App\Models\Employee;
 |
 */
 
-// СДЕЛАТЬ РОУТЫ РУССКИМ ТРАНСЛИТОМ
 
 
 Route::get('/novosti', [App\Http\Controllers\NewsController::class, 'index'])->name('novosti');

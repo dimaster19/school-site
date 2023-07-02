@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="container">
-    {{ Breadcrumbs::render('distance') }}
+    {{ DiglacticBreadcrumbs::render('distance') }}
 
     @foreach ($resources as &$resource_group)
     @foreach ($resource_group as $resource)

@@ -42,6 +42,7 @@ class NewsController extends Controller
         // ----
 
         $news = News::findOrFail($id);
+        $news->load('attachment');
         return view('news', compact('news', 'title'));
     }
 

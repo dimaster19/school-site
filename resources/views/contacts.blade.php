@@ -2,7 +2,7 @@
 @include ('header')
 
 <div class="container radius-content py-4 px-4">
-{{ Breadcrumbs::render('contacts') }}
+{{ DiglacticBreadcrumbs::render('contacts') }}
 
     <div class="d-flex justify-content-center w-75 mx-auto mb-3">
         <div class=""><img src="../build/imgs/sm-logo.png" style="height: 95%; width: 95%" alt=""></div>
