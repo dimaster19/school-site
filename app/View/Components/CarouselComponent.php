@@ -11,7 +11,7 @@ class CarouselComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public array $imgs)
+    public function __construct(public object $imgs)
     {
 
     }

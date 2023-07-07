@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Notify;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,8 @@ class HomeController extends Controller
 
     public function getCarousel()
     {
-        return array_diff(scandir(public_path('build/imgs/carousel')), array('.', '..'));
+      //  return array_diff(scandir(public_path('build/imgs/carousel')), array('.', '..'));
+        return  DB::table('attachments')->where('group', 'carousel')->get();
     }
 
     public static function setCarousel(array $imgs)
