@@ -56,6 +56,12 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.people')
                 ->route('platform.systems.users')
                 ->permission('platform.systems.users'),
+
+            Menu::make(__('Roles'))
+                ->icon('bs.lock')
+                ->route('platform.systems.roles')
+                ->permission('platform.systems.roles')
+                ->divider(),
             // Menu::make('Get Started')
             //     ->icon('bs.book')
             //     ->title('Navigation')
@@ -87,11 +93,7 @@ class PlatformProvider extends OrchidServiceProvider
 
 
 
-            // Menu::make(__('Roles'))
-            //     ->icon('bs.lock')
-            //     ->route('platform.systems.roles')
-            //     ->permission('platform.systems.roles')
-            //     ->divider(),
+
 
             // Menu::make('Documentation')
             //     ->title('Docs')
