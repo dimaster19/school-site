@@ -8,11 +8,7 @@
 <div class="container">
     {{ DiglacticBreadcrumbs::render('distance') }}
 
-    @foreach ($resources as &$resource_group)
-    @foreach ($resource_group as $resource)
 
-    @endforeach
-    @endforeach
     <table class="table table-primary" >
         <thead>
             <tr>

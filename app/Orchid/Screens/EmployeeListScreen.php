@@ -15,6 +15,7 @@ use Orchid\Screen\Layouts\Modal;
 use Orchid\Screen\Fields\Select;
 use App\Models\Rank;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeListScreen extends Screen
 {
@@ -125,8 +126,9 @@ class EmployeeListScreen extends Screen
 
     public function remove(Request $request)
     {
-        Employee::findOrFail($request->get('id'))->delete();
-
+        $workers = Employee::findOrFail($request->get('id'));
+        Storage::delete(ltrim($workers->photo, '/storage/'));
+        $workers->delete();
         Toast::info('Запись №' . $request->get('id') . ' успешно удалена');
     }
 }

@@ -17,13 +17,13 @@
     <div class="w-100 radius-content py-4 px-4 mb-4">
         <p class="fs-4 mt-2" style="text-align: justify; white-space: pre-line">{{$news->text}}</p>
 
-        <div id="carouselExampleDark" class="carousel slide mt-4 mb-4" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel slide mt-4 mb-4  news-carousel" data-bs-ride="carousel">
 
             <div class="carousel-inner" style="border-radius: 8px;">
                 @foreach ($news->attachment as $pic)
-                    <div class="carousel-item" data-bs-interval="4000">
-                    <img src="{{ $pic->url() }}" class="d-block w-100" alt="{{ $pic->original_name}}">
-                    </div>
+                <div class="carousel-item" data-bs-interval="4000" style="height: 400px;">
+                    <img src="{{ $pic->url() }}" class="d-block mx-auto" style="height: 100%" alt="{{ $pic->original_name}}">
+                </div>
                 @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -35,6 +35,19 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+
+        <div class="row news-gallery">
+            @foreach ($news->attachment as $pic)
+            <div class="col-md-6 col-sm-12 mt-3">
+                <div class="card">
+                    <img src="{{ $pic->url() }}" class="d-block mx-auto" style="width: 100%" alt="{{ $pic->original_name}}">
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+
     </div>
 
 </div>

@@ -16,18 +16,16 @@
 <body class="antialiased">
 
     <header>
-
-
-        <div class="container px-0 border-bottom py-3 fs-5">
+        <div class="container px-0 border-bottom py-3 fs-5 w-100">
             <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-12 align-items-center d-flex align-items-center  justify-content-lg-start justify-content-md-start justify-content-sm-center">
                     <a href="{{env('APP_URL')}}" class="d-flex align-items-center link-opacity-25-hover link-dark text-decoration-none">
                         <img src="{{env('APP_URL')}}/build/imgs/logo.png" class="w-auto" style="height: 70px" alt="logo">
                     </a>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12  d-flex align-items-center">
-                    <ul class="nav w-100   justify-content-lg-end justify-content-md-end justify-content-sm-center">
-                        <li class="nav-item d-flex" style="margin-right: 10px;">
+                <div class="col-lg-6 col-md-6 col-sm-12 d-flex align-items-center">
+                    <ul class="nav w-100 justify-content-lg-end justify-content-md-end justify-content-sm-center">
+                        <li class="nav-item d-flex">
                             <div class="d-flex align-items-center"><i class="fa fa-phone px-1" style="font-size: 18px; color:#2e86de" aria-hidden="true"></i></div>
                             <a href="tel:+79494531981" class="nav-link p-0 link-dark link-opacity-25-hover">+7 949 453-19-81</a>
                         </li>

@@ -123,7 +123,7 @@ class CarouselScreen extends Screen
             // dd($pic);
             Storage::delete($pic->path . $pic->name . '.' . $pic->extension);
         }
-        DB::table('attachments')->where('id', $request->get('id'))->delete();
+        $removed->delete();
 
     }
 }
